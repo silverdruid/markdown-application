@@ -12,7 +12,9 @@ export default {
   el: '#editor',
   data() {
     return {
-        input: "Tell me your secret",     
+      input: "",
+      timeout: '',
+
    }
   },
   computed: {
@@ -21,8 +23,13 @@ export default {
     }
   },
   methods: {
-    update: function (e) {
-      this.input = e.target.value
+    update(e) {
+      const task = () => this.input = e.target.value
+      this.debounce(task, 500)
+    },
+    debounce(func, wait = 1000) {
+      clearTimeout(this.timeout)
+      this.timeout = setTimeout(func, wait)
     }
   }
 }
