@@ -1,5 +1,5 @@
 <template>
-  <div>MarkDown Editor</div>
+  <div class="title">MarkDown Editor</div>
   <div id="editor">
     <textarea :value="input" @input="update"></textarea>
     <div v-html="compiledMarkdown"></div>
@@ -7,6 +7,7 @@
 </template>
 
 <script>
+
 export default {
   el: '#editor',
   data() {
@@ -15,7 +16,7 @@ export default {
    }
   },
   computed: {
-    compiledMarkdown: function () {
+    compiledMarkdown() {
       return this.input
     }
   },
@@ -54,6 +55,16 @@ export default {
       font-size: 14px;
       font-family: "Monaco", courier, monospace;
       padding: 20px;
+    }
+
+    .title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 32px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: #2431e0;
     }
   
     code {
